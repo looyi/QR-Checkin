@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.decoding;
+package com.example.decoding;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPointCallback;
-import com.zijunlin.Zxing.Demo.CaptureActivity;
+import com.example.qrcode.CaptureActivity;
 
 import android.content.SharedPreferences;
 import android.os.Handler;

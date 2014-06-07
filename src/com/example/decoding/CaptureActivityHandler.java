@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.decoding;
+package com.example.decoding;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.zijunlin.Zxing.Demo.CaptureActivity;
-import com.zijunlin.Zxing.Demo.R;
-import com.zijunlin.Zxing.Demo.camera.CameraManager;
-import com.zijunlin.Zxing.Demo.view.*;
+import com.example.qrcode.CaptureActivity;
+import com.example.R;
+import com.example.camera.CameraManager;
+import com.example.view.*;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.camera;
+package com.example.camera;
 
 import android.content.Context;
 import android.content.SharedPreferences;

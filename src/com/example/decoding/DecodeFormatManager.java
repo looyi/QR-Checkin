@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.decoding;
+package com.example.decoding;
 
 import java.util.Arrays;
 import java.util.List;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.camera;
+package com.example.camera;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -67,10 +67,11 @@ final class CameraConfigurationManager {
    * LuminanceSource subclass. In the future we may want to force YUV420SP as it's the smallest,
    * and the planar Y can be used for barcode scanning without a copy in some cases.
    */
-  void setDesiredCameraParameters(Camera camera) {
-    Camera.Parameters parameters = camera.getParameters();
+  void setDesiredCameraParameters(Camera camera) {	
+	camera.setDisplayOrientation(90);	  
+    Camera.Parameters parameters = camera.getParameters();    
     Log.d(TAG, "Setting preview size: " + cameraResolution);
-    parameters.setPreviewSize(cameraResolution.x, cameraResolution.y);
+    parameters.setPreviewSize(cameraResolution.x, cameraResolution.y);        
     setFlash(parameters);
     setZoom(parameters);
     //setSharpness(parameters);

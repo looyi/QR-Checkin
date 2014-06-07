@@ -1,4 +1,4 @@
-package com.zijunlin.Zxing.Demo;
+package com.example.qrcode;
 
 import java.io.IOException;
 import java.util.Vector;
@@ -6,10 +6,12 @@ import java.util.Vector;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 
-import com.zijunlin.Zxing.Demo.camera.CameraManager;
-import com.zijunlin.Zxing.Demo.decoding.CaptureActivityHandler;
-import com.zijunlin.Zxing.Demo.decoding.InactivityTimer;
-import com.zijunlin.Zxing.Demo.view.ViewfinderView;
+import com.example.camera.CameraManager;
+import com.example.decoding.CaptureActivityHandler;
+import com.example.decoding.InactivityTimer;
+import com.example.logic.QrResult;
+import com.example.logic.RecordManager;
+import com.example.view.ViewfinderView;
 
 import android.app.Activity;
 import android.content.res.AssetFileDescriptor;
@@ -20,10 +22,12 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.widget.TextView;
+import com.example.R;
 
 public class CaptureActivity extends Activity implements Callback {
 
@@ -43,7 +47,7 @@ public class CaptureActivity extends Activity implements Callback {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
+		setContentView(R.layout.scan_main);
 		//≥ı ºªØ CameraManager
 		CameraManager.init(getApplication());
 
@@ -106,13 +110,11 @@ public class CaptureActivity extends Activity implements Callback {
 		}
 	}
 
-	@Override
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
 			int height) {
 
 	}
 
-	@Override
 	public void surfaceCreated(SurfaceHolder holder) {
 		if (!hasSurface) {
 			hasSurface = true;
@@ -121,7 +123,6 @@ public class CaptureActivity extends Activity implements Callback {
 
 	}
 
-	@Override
 	public void surfaceDestroyed(SurfaceHolder holder) {
 		hasSurface = false;
 
@@ -142,10 +143,16 @@ public class CaptureActivity extends Activity implements Callback {
 
 	public void handleDecode(Result obj, Bitmap barcode) {
 		inactivityTimer.onActivity();
-		viewfinderView.drawResultBitmap(barcode);
+		//viewfinderView.drawResultBitmap(barcode);
 		 playBeepSoundAndVibrate();
-		txtResult.setText(obj.getBarcodeFormat().toString() + ":"
-				+ obj.getText());
+		//txtResult.setText(obj.getBarcodeFormat().toString() + ":"	+ obj.getText());
+		 RecordManager rm = new RecordManager(this);
+		 Log.v("cai",obj.getText());
+		 if(rm.signIn(new QrResult(obj.getText())))
+			 txtResult.setText("ok");
+		 else
+			 txtResult.setText("not ok");
+		
 	}
 
 	private void initBeepSound() {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.decoding;
+package com.example.decoding;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package com.zijunlin.Zxing.Demo.view;
+package com.example.view;
 
 import com.google.zxing.ResultPoint;
-import com.zijunlin.Zxing.Demo.R;
-import com.zijunlin.Zxing.Demo.camera.CameraManager;
+import com.example.R;
+import com.example.camera.CameraManager;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -61,7 +61,7 @@ public final class ViewfinderView extends View {
 
     // Initialize these once for performance rather than calling them every time in onDraw().
     paint = new Paint();
-    Resources resources = getResources();
+    Resources resources = getResources();    
     maskColor = resources.getColor(R.color.viewfinder_mask);
     resultColor = resources.getColor(R.color.result_view);
     frameColor = resources.getColor(R.color.viewfinder_frame);
