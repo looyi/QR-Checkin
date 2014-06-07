@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import android.content.Context;
 
 public class RecordManager {	
-	public DBAdapter dbAdapter = null;
+	public RecordDBAdapter dbAdapter = null;
 	public Context context;
 	
 	public RecordManager(Context context)
 	{
 		this.context = context;
-		dbAdapter = new DBAdapter(context, "records", null, 1);        
+		dbAdapter = new RecordDBAdapter(context, "records", null, 1);        
 	}
 		
 	

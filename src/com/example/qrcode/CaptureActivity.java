@@ -14,6 +14,8 @@ import com.example.logic.RecordManager;
 import com.example.view.ViewfinderView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -148,11 +150,32 @@ public class CaptureActivity extends Activity implements Callback {
 		//txtResult.setText(obj.getBarcodeFormat().toString() + ":"	+ obj.getText());
 		 RecordManager rm = new RecordManager(this);
 		 Log.v("cai",obj.getText());
-		 if(rm.signIn(new QrResult(obj.getText())))
-			 txtResult.setText("ok");
-		 else
-			 txtResult.setText("not ok");
-		
+		 boolean success = false;
+		 String msg = "签到失败!请确认二维码是否过期！";
+		 QrResult r = new QrResult(obj.getText());
+		 if(r.isValid())
+		 {
+			 if(rm.signIn(r))		 			 		 	
+				 success = true;
+			 if(success)
+				 msg = "签到成功！";
+		 }
+		 new AlertDialog.Builder(CaptureActivity.this)  
+			
+         .setTitle("签到")
+
+         .setMessage(msg)
+
+         .setPositiveButton("确定",
+      		   new DialogInterface.OnClickListener(){
+
+					public void onClick(DialogInterface arg0,
+							int arg1) {
+						
+						CaptureActivity.this.finish();
+					}			            	   
+         		}
+       ).show();	
 	}
 
 	private void initBeepSound() {

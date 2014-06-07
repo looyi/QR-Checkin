@@ -2,9 +2,9 @@ package com.example.logic;
 
 public class QrResult {
 
-	String date;
-	String key;
-	String course;
+	String date = "";
+	String key = "";
+	String course = "";
 	
 	public QrResult()
 	{
@@ -13,10 +13,13 @@ public class QrResult {
 	
 	public QrResult(String result)
 	{
-		String [] data = result.split(" ");
-		course = data[0];
-		date = data[1];
-		key = data[2];
+		if(isValid(result))
+		{
+			String [] data = result.split(" ");
+			course = data[0];
+			date = data[1];
+			key = data[2];
+		}
 	}
 	
 	public String getDate()
@@ -36,6 +39,15 @@ public class QrResult {
 	
 	public static boolean isValid(String resultString)
 	{
+		if(resultString.split(" ").length == 3)
+			return true;
+		return false;		
+	}
+	
+	public boolean isValid()
+	{
+		if("".equals(course) || "".equals(date) || "".equals(key))
+			return false;
 		return true;
 	}
 }

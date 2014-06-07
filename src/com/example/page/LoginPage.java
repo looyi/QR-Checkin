@@ -81,5 +81,39 @@ public class LoginPage extends Activity {
 			}
 		});
         
+        register.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				if(userName.getText().toString().equals(""))
+				{
+					Toast.makeText(LoginPage.this, "请输入要注册的用户名", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				if(password.getText().toString().equals(""))
+				{
+					Toast.makeText(LoginPage.this, "请输入密码", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				UserManager userManager = new UserManager(LoginPage.this);
+				boolean isTeacher = true;
+				if(identity == UserData.STUDENT)
+					isTeacher = false;
+				if(!userManager.register(userName.getText().toString(),password.getText().toString(),isTeacher))
+				{
+					Toast.makeText(LoginPage.this, "抱歉，用户名已存在", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				Toast.makeText(LoginPage.this, "注册成功", Toast.LENGTH_SHORT).show();
+				UserData.get().setIdentity(identity);
+				UserData.get().setUserName(userName.getText().toString());
+				UserData.get().setPassword(password.getText().toString());
+				Intent intent = null;
+				if(identity == UserData.STUDENT)				
+					intent = new Intent(LoginPage.this,MainPage.class);				
+				else
+					intent = new Intent(LoginPage.this,TeacherMainPage.class);
+				LoginPage.this.startActivity(intent);		
+			}
+		});
     }
 }

@@ -31,4 +31,19 @@ public class UserData {
 		identity = i;
 	}
 		
+	public String getUserName()
+	{
+		return name;
+	}
+	
+	public String getPassword()
+	{
+		return password;
+	}
+	
+	public int getIdentity()
+	{
+		return identity; 
+	}
+	
 }
