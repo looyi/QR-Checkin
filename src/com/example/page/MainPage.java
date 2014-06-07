@@ -39,10 +39,7 @@ public class MainPage extends Activity{
 				MainPage.this.startActivity(intent);
 			}
 		});
-        
-        qrCode = (ImageView)findViewById(R.id.imageView1);
-        Bitmap b = QRCreator.createImage("testing 2014.6.7 xxx");
-        qrCode.setImageBitmap(b);
+
     }
 
     @Override

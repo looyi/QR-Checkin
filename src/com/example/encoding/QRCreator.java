@@ -3,6 +3,7 @@ package com.example.encoding;
 import java.util.Hashtable;
 
 import android.graphics.Bitmap;
+import android.view.Display;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -12,12 +13,18 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 public class QRCreator {
 	
-	private final static int QR_WIDTH = 200;
-	private final static int QR_HEIGHT = 200;
+	private static int QR_WIDTH;
+	private static int QR_HEIGHT;
+	
+	
 	
 	// Éú³ÉQRÍ¼
-    public static Bitmap createImage(String text) {
+    public static Bitmap createImage(String text, int winWidth, int winHeight) {
         try {
+        	
+        	QR_WIDTH = (int)(winWidth*0.8);
+        	QR_HEIGHT = QR_WIDTH;
+        	
             QRCodeWriter writer = new QRCodeWriter();
             	
                         
